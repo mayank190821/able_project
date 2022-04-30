@@ -1,0 +1,68 @@
+.button-inside{
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    height:70vh;
+}
+.button-inside>a{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.button-inside>a>button{
+    border-radius: 10px;
+    border: none;
+    color: white;
+    height:100px;
+    width:100px;
+    background-color: #0078cd;
+}
+.jobAdded{
+    width: 40%;
+}
+.outer-conteiner{
+    display: flex;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+}
+.jobDesc{
+    display: flex;
+    margin:0 !important;
+}
+label{
+    width:30%;
+    margin:25px;
+    text-align: right;
+}
+label>span{
+    font-size: small;
+    color:grey;
+    display: flex;
+    flex-wrap: wrap;
+    font-style: italic;
+    float: right;
+}
+input, textarea,select{
+    width:40%;
+    border-top:none;
+    border-right:none;
+    border-left:none;
+    border-bottom:1px solid grey;
+    background-color: #80808026;
+    outline:none;
+    border-radius: 2px;
+}
+
+select,input{
+    height:40px;
+}
+.button-add{
+    border:none;
+    background-color: #0078cd;
+    color:white;
+    border-radius:5px;
+    padding:5px 10px;
+}

@@ -5,4 +5,6 @@ urlpatterns = [
     # path("",views.base,name='base'),
     path("",views.login,name='login'),
     path("register",views.register,name='register'),
+    path("add",views.add,name="add"),
+    path("addjobs",views.addjobs,name="addjobs"),
 ]

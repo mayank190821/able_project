@@ -1,0 +1,17 @@
+body{
+    height:100vh;
+    /* overflow: hidden; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.form-main-container{
+    width: 28vw;
+    height:fit-content;
+    margin:auto;
+    top: auto;
+    bottom: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 1px #bdbcbc;
+}

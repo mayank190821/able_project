@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+{% block title %} Add Job Opening{% endblock title %}
+{% block body %}
+<div class="outer-conteiner">
+    <div class="form-and-elements d-flex justify-content-center align-content-center">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="job-role">
+                <label for="jobRole">
+                    Job Role*
+                </label>
+                <select name="jobRole" id="jobRole">
+                    <option value="">Select...</option>
+                    <option value="Bussiness Development Executive">Bussiness Development Executive</option>
+                    <option value="Customer Support Voice">Customer Support Voice</option>
+                    <option value="Inside Sales">Inside Sales</option>
+                    <option value="Field Sales">Field Sales</option>
+                    <option value="Content Writing">Content Writing</option>
+                    <option value="Digital Marketing">Digital Marketing</option>
+                </select>
+            </div>
+            <div class="jobDesc">
+                <label for="jobDesc"> Job Description* <br> <span>We will populate a standard job discription that
+                        can edit</span></label>
+                <textarea name="jobDesc" id="jobDesc"></textarea>
+            </div>
+            <div class="place">
+                <label for="place">
+                    Place of Work*
+                    <br><span>(address)</span>
+                </label>
+                <input type="text" name="place">
+            </div>
+            <div class="phone ">
+                <label for="phone">
+                    Phone no for coordination*
+                    <br> <span>Your phone no. is extremly safe with us it is only shared with one person in the
+                        team</span>
+                </label>
+                <input type="tel" name="phone">
+            </div>
+            <div class="button-form d-flex justify-content-center">
+                <button type="submit" class="button-add">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock body %}

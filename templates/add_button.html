@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block title %} Add Job opening{% endblock title %}
+{% block body %}
+<div class="button-inside m-2 d-flex flex-column">
+    <h2>{{request.email}}</h2>
+    <a href="/addjobs" style="text-decoration:none">
+        <button type="submit" name="add" id="add" class="mb-2">
+            <i class="fa fa-plus" style="font-size:50px"></i>
+        </button>
+        <p style="left:-14"> Add Job Opening</p>
+    </a>
+</div>
+{% endblock body %}

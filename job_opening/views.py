@@ -33,7 +33,7 @@ def register(request):
         elif User.objects.filter(username=username).exists():
             messages.warning(request,"Username Taken")
         elif password !=r_password:
-            messages.danger(request,"Password and confirm password didn't match!!!")
+            messages.warning(request,"Password and confirm password didn't match!!!")
         elif User.objects.filter(email=email).exists():
             messages.warning(request,"Email Taken")
         else:

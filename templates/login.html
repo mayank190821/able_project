@@ -1,22 +1,21 @@
 {% extends 'base.html' %}
 {% block title %} Login {% endblock title %}
 {% block body %}
-{% csrf_token %}
 <div class="form-main-container">
     <h3 class="text-center">Login</h3>
     <div>
-
-        <form>
+        <form method="post">
+            {% csrf_token %}
             <!-- Email input -->
             <div class="form-outline mb-4">
                 <label class="form-label" for="loginName">Username</label>
-                <input type="text" id="loginName" class="form-control" />
+                <input type="text" id="loginName" name="loginName" class="form-control" />
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
                 <label class="form-label" for="loginPassword">Password</label>
-                <input type="password" id="loginPassword" class="form-control" />
+                <input type="password" id="loginPassword" name="loginPassword" class="form-control" />
             </div>
 
             <!-- Submit button -->

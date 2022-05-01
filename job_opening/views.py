@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth.models import User
-from job_opening.models import Companie
-from django.contrib.auth.hashers import make_password, check_password
-# Create your views here.
+from django.contrib.auth.models import User,auth
+from job_opening.models import NewJob
+from django.contrib.auth import logout
+
 # username admin password admin123@
+
 def base(request):
     return render(request,"base.html")
 
@@ -11,15 +12,10 @@ def login(request):
     if request.method=="POST":
         username= request.POST.get('loginName')
         password =  request.POST.get('loginPassword')
-        record=Companie.objects.all();
-
-        for i in range(len(record)):
-            if check_password(password,record[i].salt) and username == record[i].username:
-                print("yha a gaya")
-                return redirect("/add")
-        else:
-            print("user not found")
-
+        user = auth.authenticate(username=username,password = password)
+        if user is not None:
+            auth.login(request,user)
+            return redirect("/add")
     return render(request,"login.html")
 
 def register(request):
@@ -29,25 +25,36 @@ def register(request):
         email = request.POST.get('registerEmail')
         password = request.POST.get('registerPassword')
         r_password =  request.POST.get('registerRepeatPassword')
-        salt=make_password(password)
-        if check_password(password,salt) and check_password(r_password,salt):
-            company = Companie(name,username,email,salt)
-            company.save()
-            return redirect("/")
-        else:
-            print('invalid password and confirm password')
-
+        if password ==r_password:
+            if User.objects.filter(username=username).exists():
+                print("Username taken")
+            elif User.objects.filter(email=email).exists():
+                print('email taken')
+            else:
+                user = User.objects.create_user(username=username,password=password,email=email,first_name=name)
+                user.save();
+                return redirect("/")
     return render(request,"register.html")
 
 def add(request):
+    if request.user.is_anonymous:
+        return redirect("/")
     return render(request,'add_button.html')
 
 def addjobs(request):
+    if request.user.is_anonymous:
+        return redirect("/")
     if request.method=="POST":
         jobRole = request.POST.get('jobRole')
         jobDesc = request.POST.get('jobDesc')
         place = request.POST.get('place')
         phone = request.POST.get('phone')
-        print(jobRole,jobDesc,place,phone)
+        email = request.user.email
+        job = NewJob(email=email,jobRole=jobRole,jobDesc=jobDesc,place=place,phone=phone)
+        job.save()
+        return redirect("/add")
 
     return render(request,"add_job_opening.html")
+def logoutUser(request):
+    logout(request)
+    return redirect('/')

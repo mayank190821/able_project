@@ -1,6 +1,6 @@
 # Able Job Portal
 This is a simple website where users can Log In/ Register and post a job opening.
-<div style="display:flex; justify-content:space-around">
+<div style="display:flex;flex-direction:column; justify-content:space-around">
     <img src="static/pic1.png" style="width:40vw;">
     <img src="static/pic2.png" style="width:40vw;">
 </div>

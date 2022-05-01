@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from job_opening.models import NewJob
 from django.contrib.auth import logout
-
+from django.contrib import messages
 # username admin password admin123@
 
 def base(request):
@@ -27,12 +27,13 @@ def register(request):
         r_password =  request.POST.get('registerRepeatPassword')
         if password ==r_password:
             if User.objects.filter(username=username).exists():
-                print("Username taken")
+                messages.warning(request,"Username Taken")
             elif User.objects.filter(email=email).exists():
-                print('email taken')
+                messages.warning(request,"Email Taken")
             else:
                 user = User.objects.create_user(username=username,password=password,email=email,first_name=name)
                 user.save();
+                messages.success(request,"User Created")
                 return redirect("/")
     return render(request,"register.html")
 
@@ -52,6 +53,7 @@ def addjobs(request):
         email = request.user.email
         job = NewJob(email=email,jobRole=jobRole,jobDesc=jobDesc,place=place,phone=phone)
         job.save()
+        messages.success(request,"Job Added")
         return redirect("/add")
 
     return render(request,"add_job_opening.html")

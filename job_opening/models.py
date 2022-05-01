@@ -1,4 +1,3 @@
-from ast import Str
 from django.db import models
 from django.forms import CharField, EmailField, EmailInput
 

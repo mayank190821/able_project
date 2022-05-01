@@ -2,7 +2,7 @@
 {% block title %}Register{% endblock title %}Register
 {% block body %}
 <div class="form-main-container">
-    
+
     <div class="tab-pane active" id="pills-register">
         <h3 class="text-center">Register</h3>
         <form method="post">
@@ -10,31 +10,51 @@
             <!-- Name input -->
             <div class="form-outline mb-3">
                 <label class="form-label" for="registerName">Name</label>
-                <input type="text" id="registerName" name="registerName"class="form-control"  required  />
+                <input type="text" id="registerName" onfocusin="fin(event)" onfocusout="fout(event)" name="registerName"
+                    class="form-control" required />
+                <div class="validate" id="nameValid">
+                    Use Alphabet Only
+                </div>
             </div>
 
             <!-- Username input -->
             <div class="form-outline mb-3">
                 <label class="form-label" for="registerUsername">Username</label>
-                <input type="text" id="registerUsername" name="registerUsername" class="form-control" required />
+                <input type="text" id="registerUsername" onfocusin="fin(event)" onfocusout="fout(event)"
+                    name="registerUsername" class="form-control" required />
+                <div class="validate" id="usernameValid">
+                    Use aplhabets and numbers only
+                </div>
             </div>
 
             <!-- Email input -->
             <div class="form-outline mb-3">
                 <label class="form-label" for="registerEmail">Email</label>
-                <input type="email" id="registerEmail" name="registerEmail" class="form-control" required />
+                <input type="email" id="registerEmail" onfocusin="fin(event)" onfocusout="fout(event)"
+                    name="registerEmail" class="form-control" required />
+                <div class="validate" id="emailValid">
+                    Enter valid email Id Only
+                </div>
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-3">
                 <label class="form-label" for="registerPassword">Password</label>
-                <input type="password" id="registerPassword" name="registerPassword" class="form-control" required />
+                <input type="password" id="registerPassword" onfocusin="fin(event)" onfocusout="fout(event)"
+                    name="registerPassword" class="form-control" required />
+                <div class="validate" id="passValid">
+                    Must use A-Z, a-z, 0-9, and special character like @,#,$,$,%,^,&,*,(,). Atleast one of each type
+                </div>
             </div>
 
             <!-- Repeat Password input -->
             <div class="form-outline mb-3">
                 <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-                <input type="password" id="registerRepeatPassword" name= "registerRepeatPassword"class="form-control" required />
+                <input type="password" id="registerRepeatPassword" onfocusin="fin(event)" onfocusout="fout(event)"
+                    name="registerRepeatPassword" class="form-control" required />
+                <div class="validate" id="rePassValid">
+                    Must use A-Z, a-z, 0-9, and special character like @,#,$,$,%,^,&,*,(,). Atleast one of each type
+                </div>
             </div>
 
             <!-- Submit button -->
@@ -48,4 +68,5 @@
         </form>
     </div>
 </div>
+<script src="../static/regiterAndLogin.js"></script>
 {% endblock body %}

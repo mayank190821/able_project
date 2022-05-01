@@ -9,7 +9,7 @@
                 <label for="jobRole">
                     Job Role*
                 </label>
-                <select name="jobRole" id="jobRole">
+                <select name="jobRole" id="jobRole"  required>
                     <option value="">Select...</option>
                     <option value="Bussiness Development Executive">Bussiness Development Executive</option>
                     <option value="Customer Support Voice">Customer Support Voice</option>
@@ -22,14 +22,14 @@
             <div class="jobDesc">
                 <label for="jobDesc"> Job Description* <br> <span>We will populate a standard job discription that
                         can edit</span></label>
-                <textarea name="jobDesc" id="jobDesc"></textarea>
+                <textarea name="jobDesc" id="jobDesc" required></textarea>
             </div>
             <div class="place">
                 <label for="place">
                     Place of Work*
                     <br><span>(address)</span>
                 </label>
-                <input type="text" name="place">
+                <input type="text" name="place" required>
             </div>
             <div class="phone ">
                 <label for="phone">
@@ -37,7 +37,7 @@
                     <br> <span>Your phone no. is extremly safe with us it is only shared with one person in the
                         team</span>
                 </label>
-                <input type="tel" name="phone">
+                <input type="tel" name="phone" required>
             </div>
             <div class="button-form d-flex justify-content-center">
                 <button type="submit" class="button-add">Submit</button>

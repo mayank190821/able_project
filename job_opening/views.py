@@ -17,6 +17,8 @@ def login(request):
         if user is not None:
             auth.login(request,user)
             return redirect("/add")
+        else:
+            messages.warning(request,"User Not exist")
     return render(request,"login.html")
 
 def register(request):
@@ -26,7 +28,7 @@ def register(request):
         email = request.POST.get('registerEmail')
         password = request.POST.get('registerPassword')
         r_password =  request.POST.get('registerRepeatPassword')
-        reName = re.compile("[a-zA-Z]")
+        reName = re.compile(r"^[a-zA-Z]+$")
         match = re.match(reName,name)
         if (match is None):
             messages.warning(request,"For name use only alphabets")
@@ -58,7 +60,7 @@ def addjobs(request):
         place = request.POST.get('place')
         phone = request.POST.get('phone')
         email = request.user.email
-        rePhone = re.compile("[0-9]")
+        rePhone = re.compile(r"^[0-9]+$.{12}")
         if(re.match(rePhone,phone) is None):
             messages.warning(request,"Use only number in phone field")
         else:
@@ -68,6 +70,7 @@ def addjobs(request):
             return redirect("/add")
 
     return render(request,"add_job_opening.html")
+
 def logoutUser(request):
     logout(request)
     return redirect('/')

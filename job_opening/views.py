@@ -64,7 +64,7 @@ def addjobs(request):
         place = request.POST.get('place')
         phone = request.POST.get('phone')
         email = request.user.email
-        rePhone = re.compile(r"^[0-9]+$.{12}")
+        rePhone = re.compile(r"^[0-9]+$.{10-12}")
         if(re.match(rePhone,phone) is None):
             messages.warning(request,"Use only number in phone field")
         else:

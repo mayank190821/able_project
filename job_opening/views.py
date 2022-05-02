@@ -1,3 +1,4 @@
+from email import message
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from job_opening.models import NewJob
@@ -28,10 +29,13 @@ def register(request):
         email = request.POST.get('registerEmail')
         password = request.POST.get('registerPassword')
         r_password =  request.POST.get('registerRepeatPassword')
+        rePass = re.compile(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[a-zA-Z0-9!@#$%^&\*()]+).{7-20}$")
         reName = re.compile(r"^[a-zA-Z]+$")
         match = re.match(reName,name)
         if (match is None):
             messages.warning(request,"For name use only alphabets")
+        elif re.match(rePass,password)is None or re.match(rePass,r_password) is None:
+            messages.warning(request,"Please follow the password criteria")
         elif User.objects.filter(username=username).exists():
             messages.warning(request,"Username Taken")
         elif password !=r_password:
